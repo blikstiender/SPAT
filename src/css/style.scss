@@ -1,0 +1,430 @@
+
+$contentTop: 50px;
+$contentHeight: 500px;
+$contentWidth: 85%;
+$tabWidth: 30%;
+$tabHeight: 40px;
+$tabPaddingTop: 15px;
+$tabPaddingLeft: 20px;
+$entryAreaPadding: 40px;
+$borderColor: #bbb;
+$selectedTabColor: #1abc9c;
+$imgAssetPath: "img";
+
+$buttonHeight: 33px;
+@mixin buttonPadding {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@mixin uibutton {
+    display: block;
+    background-color: $darkBlue;
+    border-radius: 2px; 
+    color: #fff;
+    font-weight: 300;
+    cursor: pointer;
+    &:active {
+        top: 3px;
+    }
+}
+
+
+
+$logoHeight: 22vmin; 
+$logoWidth: 380px; 
+
+/*************
+**  Colors  **
+**************/
+$darkBlue: #01787A;
+$lightBlue: #2EB7C2;
+$darkOrange:  #E85711;
+$lightOrange: #F69131;
+
+@mixin margins {
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+
+body {
+    padding: 0; 
+    border: 0; 
+    margin: 0; 
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+    font-size: 12px;
+}
+
+.header {
+    display: block;
+    width: $contentWidth;
+    height: $logoHeight;
+    margin-bottom: 20px; 
+    margin-top: 20px; 
+    margin-left: auto;
+    margin-right: auto;
+    clear: none;
+    .logo{
+        float: right;
+        margin: 0 auto; 
+        width: $logoWidth;
+        height: 100%;
+        background-image: url(/#{$imgAssetPath}/logo.png);
+        background-size:     auto 100%;
+        background-repeat:   no-repeat;
+        background-position: center center;
+        clear: none;
+    }
+    .headerTitle {
+        float: left;
+        color: #757575;
+        line-height: $logoHeight;
+        font-size: 40px; 
+        padding-right: 20px;
+        color: $darkBlue;
+        text-shadow: 
+            -1px 1px #fff,
+            -2px 2px $lightBlue;
+        font-weight: 600;
+        font-size: 2.5vmax;
+        clear: none;
+        .labName:after {
+            content: "\00a0"
+            
+        }
+        .labName {
+            text-shadow: 
+                -1px 1px #fff,
+                -2px 2px $darkOrange;
+            color: $lightOrange;
+            font-size: 1.5em;
+
+        }
+    }
+    @media (max-width: 870px) {
+        .headerTitle {
+            display: none;
+        }
+        .logo {
+            float: none;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+}
+
+
+
+
+
+.contentWrapper {
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.46);
+
+    .inputTypeSelection {
+        height: $tabHeight; 
+        .inputTypeTab {
+            color: #444; 
+            top: 0;
+            border-right: 1px solid $borderColor;
+            width: 50%;
+            box-sizing: border-box;
+            display: inline-block;
+            float: right;
+            text-align: center; 
+            line-height: $tabHeight;
+            box-shadow: inset 0px -5px 20px -8px rgba(44, 62, 80,0.5);
+            border-bottom: 1px solid $borderColor;
+        }
+
+        .inputTypeTab.tabSelected {
+            box-shadow:none;
+            border-bottom: none;
+        }
+    }
+
+    .entryArea, .resultsArea{
+        display: block;
+        padding: $entryAreaPadding;
+        position: relative; 
+        top: 0; 
+        left: 0; 
+    }
+
+    .col3 {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 33%;
+        min-height: $contentHeight;
+        float: left; 
+        overflow: hidden;
+        padding: 10px; 
+    }
+    
+
+    display: block;
+    width: $contentWidth;
+    min-height: $contentHeight;
+    border: 1px solid $borderColor;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dataInput {
+
+    &.fileInput {
+        .uploadFileInput {
+            display: block; 
+            position: relative;
+            overflow: hidden;
+            width: 150px; 
+            margin-top: 20px; 
+            & input[type="file"] {
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                opacity: 0;
+                font-size: 100px;
+                filter: alpha(opacity=0);
+                cursor: pointer;
+            }
+            .uploadButton {
+                border-radius: 2px; 
+                line-height: $buttonHeight;
+                height: $buttonHeight; 
+                background-color: #fff;
+                color: $darkBlue;
+                border: 1px solid $darkBlue;
+                text-align: center; 
+                width: 95%; 
+                font-size: 12px; 
+                font-weight: 400;
+            }
+
+            margin-right: auto; 
+            margin-left: auto; 
+        }
+        .fileName {
+            margin-top: 20px; 
+            display: block;
+            width: 87%;
+            margin-right: auto; 
+            margin-left: auto; 
+            text-align: left; 
+            font-size: 12px; 
+        }
+        .filePreview {
+
+            word-break: break-all; 
+            white-wrap: break; 
+            // box-shadow: inset 0px 0px 20px 1px $borderColor;
+            padding: 10px;  
+            display: block;
+            width: 80%; 
+            height: 200px; 
+            border: 1px solid $borderColor;
+            font-size: 9px; 
+            overflow: hidden; 
+            margin-right: auto; 
+            margin-left: auto; 
+            text-align: left; 
+        }
+    }
+
+    &.textInput {
+        .textInput {
+            font-size: 12px;
+            margin-top: 20px;
+            text-align: center; 
+            .dataType {
+                
+            } 
+            .textInputArea {
+                margin-top: 5px; 
+                width: 85%;
+                height: 250px; 
+                display: block;                 
+                margin-right: auto; 
+                margin-left: auto; 
+                border: 1px solid $borderColor;
+                font-weight: 200;
+            }
+        }
+    }
+
+    .sendDataButton {
+        display: block;
+        background-color: $darkBlue;
+        border-radius: 2px; 
+        position: relative;
+        width: 170px;
+        top: 1px;
+        color: #fff;
+        font-weight: 300;
+        box-sizing: border-box;
+        height: $buttonHeight; 
+        margin-top: 10px;
+        cursor: pointer;
+        @include buttonPadding; 
+        line-height: $buttonHeight;
+        text-align: center;
+        &:active {
+            top: 3px;
+        }
+        margin-right: auto; 
+        margin-left: auto; 
+    }
+}
+
+.footer {
+    display: block;
+    margin-right: auto; 
+    margin-left: auto;
+    bottom: 0; 
+    height: 50px; 
+    width: $contentWidth;
+    margin-top: 100px;
+    border-top: 1px solid $borderColor;
+    color: $borderColor;
+    padding: 5px; 
+    text-align: center; 
+    font-size: 12px;
+}
+
+
+/* TODO: this should be way, way smarter*/
+h4 {
+    font-weight: 400;
+}
+
+
+/* TODO organize with component */
+.analysisOptions {
+    .optionSelect {
+        display: block;
+        width: 100%;
+        display: inline-block;
+        label {
+            width: 65%; 
+            float: left; 
+        }
+        input {
+            width: 30%; 
+            float: right; 
+        }
+        border-bottom: 10px;     
+    }
+}
+
+/* input styling */
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  border: 1px solid #DDDDDD;
+}
+ 
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px $darkBlue;
+}
+
+
+
+
+
+/* TODO: Literally put this in a different file, this is ridiculous */
+.resultView {
+    padding: 20px; 
+    .backButton {
+        $lineHeight: 15px;
+        position: absolute;
+        top: 20px; 
+        left: 20px; 
+        width: 200px; 
+        font-size: 12px;
+        padding-right: 10px; 
+        padding-left: 10px; 
+        padding-top: 5px;
+        padding-bottom: 5px;
+        line-height: $lineHeight;
+        display: inline-block;
+        cursor: pointer; 
+        color: $darkBlue; 
+        border: 1px solid $darkBlue; 
+        border-radius: 2px; 
+        font-weight: 400; 
+        &:active{
+            margin-top: 3px; 
+        }
+        .backSymbol {
+            display: inline-block;
+            float: left; 
+            margin-right: 5px; 
+            line-height: $lineHeight*2; 
+        }
+        .backText {
+            display: block;
+            float: right; 
+            width: 90%;
+        }
+    }
+    .resultAccess {
+        position: relative;
+        width: 400px; 
+        height: 400px; 
+        top: 120px;
+        margin-right: auto; 
+        margin-left: auto;
+        text-align: center; 
+        .downloadResult {
+            position: relative; 
+            background-color: $darkBlue; 
+            border-radius: 2px;  
+            color: #fff;
+            width: 140px; 
+            margin-right: auto;
+            margin-left: auto; 
+            padding-top: 10px; 
+            padding-bottom: 10px; 
+            font-size: 2em; 
+            cursor: pointer; 
+            &:active {
+                top: 3px;
+            }
+        }
+        .viewResult {
+            text-decoration: underline;
+            margin-top: 10px; 
+            cursor: pointer; 
+            &:hover, &:active {
+                color: $darkBlue;
+
+            }
+        }
+        .loadingResult {
+            display: inline-block;
+            width: 150px; 
+            height: 150px; 
+            background-image:  url(/#{$imgAssetPath}/loading.gif);
+            background-size: cover; 
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

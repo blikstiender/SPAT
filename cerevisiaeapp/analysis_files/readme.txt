@@ -1,0 +1,1 @@
+This is an empty directory used by the application to store data.
